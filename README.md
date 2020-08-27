@@ -1,6 +1,6 @@
 # Simple server for redirecting to the images on [waifu.pics](https://waifu.pics/)
 
-![](https://waifu.now.sh/sfw)
+![](https://waifu-pics.vercel.app/sfw)
 
 ### I wrote this server in order to be able to get random anime images for markdown
 
