@@ -3,7 +3,6 @@ const cors = require("cors");
 const fetch = require("node-fetch");
 
 const ENDPOINTS = require("./lib/endpoints.js");
-const { response } = require("express");
 
 const API_URL = "https://waifu.pics/api/";
 
