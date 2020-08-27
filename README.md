@@ -38,3 +38,11 @@ Here are different endpoints for API requests
 Just go to the https://waifu.now.sh/ followed by endpoint. E.g. https://waifu.now.sh/random will give you a random image.
 
 ![](https://waifu.now.sh/kiss)
+
+## How to use an image in Markdown
+
+Just put the above url in typical Markdown syntax
+
+```markdown
+![](https://waifu.now.sh/kiss)
+```
