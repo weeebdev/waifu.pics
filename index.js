@@ -18,6 +18,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/:endpoint", async (req, res) => {
+  res.set("Cache-Control", "no-cache");
   if (ENDPOINTS.includes(req.params.endpoint.toLocaleLowerCase())) {
     fetchImage(req.params.endpoint.toLocaleLowerCase())
       .then((response) => {
