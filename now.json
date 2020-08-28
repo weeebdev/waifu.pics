@@ -9,7 +9,7 @@
     "routes": [
         {
             "src": "/.*",
-            "dest": "https://waifu.pics/api/$1",
+            "dest": "index.js",
             "headers": {
                 "cache-control": "no-cache"
             }
