@@ -8,11 +8,11 @@
     ],
     "routes": [
         {
-            "src": "/.*",
+            "src": "/(.*)",
+            "dest": "https://waifu.pics/api/$1",
             "headers": {
                 "cache-control": "no-cache"
-            },
-            "dest": "index.js"
+            }
         }
     ]
 }
