@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const fetch = require("node-fetch");
+const got = require("got");
 
 const ENDPOINTS = require("./lib/endpoints.js");
 
@@ -20,26 +20,12 @@ app.get("/", (req, res) => {
 app.get("/:endpoint", async (req, res) => {
   res.set("Cache-Control", "no-cache");
   if (ENDPOINTS.includes(req.params.endpoint.toLocaleLowerCase())) {
-    fetchImage(req.params.endpoint.toLocaleLowerCase())
-      .then((response) => {
-        res.redirect(response.url);
-      })
-      .catch((err) =>
-        res.status(500).json({
-          message: err.message,
-        })
-      );
+    fetchImage(req.params.endpoint.toLocaleLowerCase(), res);
   } else if (req.params.endpoint.toLocaleLowerCase() === "random") {
     let endpoint = ENDPOINTS[
       Math.floor(Math.random() * ENDPOINTS.length)
     ].toLocaleLowerCase();
-    fetchImage(endpoint)
-      .then((response) => res.redirect(response.url))
-      .catch((err) =>
-        res.status(500).json({
-          message: err.message,
-        })
-      );
+    fetchImage(endpoint, res);
   } else {
     res.status(400).json({
       message: "Bad endpoint",
@@ -47,15 +33,21 @@ app.get("/:endpoint", async (req, res) => {
   }
 });
 
-function fetchImage(endpoint) {
-  return fetch(`${API_URL}${endpoint}`).then(async (response) => {
-    if (response.ok) {
-      return response.json();
-    } else {
-      let result = await response.json();
-      throw new Error(result.message);
-    }
-  });
+async function fetchImage(endpoint, response) {
+  try {
+    const { url } = await got(`${API_URL}${endpoint}`).json();
+
+    got
+      .stream(url)
+      .on("response", (response) => {
+        response.headers["cache-control"] = "no-cache";
+      })
+      .pipe(response);
+  } catch (error) {
+    response.status(500).json({
+      message: error.message,
+    });
+  }
 }
 
 const PORT = process.env.PORT || 8080;
