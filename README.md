@@ -1,6 +1,6 @@
 # Simple server for redirecting to the images on [waifu.pics](https://waifu.pics/)
 
-![](https://waifu-pics.vercel.app/sfw)
+![](https://waifu.now.sh/sfw)
 
 ### I wrote this server in order to be able to get random anime images for markdown
 
@@ -46,3 +46,5 @@ Just put the above url in typical Markdown syntax
 ```markdown
 ![](https://waifu.now.sh/kiss)
 ```
+
+## WARNING. Don't forget that "random" endpoint includes all other endpoints (NSFW too). So, in order to not get involved in confusing situations you can use "sfw" instead.
