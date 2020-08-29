@@ -6,7 +6,7 @@
 
 ## API
 
-Here are different endpoints for API requests
+Here are different endpoints for API requests.
 
 ```
 "sfw",
@@ -30,6 +30,7 @@ Here are different endpoints for API requests
 "dance",
 "cringe",
 "blush",
+"shinobu",
 "random"
 ```
 
