@@ -4,7 +4,7 @@ const got = require("got");
 
 const ENDPOINTS = require("./lib/endpoints.js");
 
-const API_URL = "https://waifu.pics/api/";
+const API_URL = "https://waifu.pics/api";
 
 const app = express();
 
@@ -17,15 +17,16 @@ app.get("/", (req, res) => {
   });
 });
 
-app.get("/:endpoint", async (req, res) => {
+app.get("/:type/:endpoint", async (req, res) => {
+  let endpoint = req.params.endpoint.toLocaleLowerCase();
+  let type = req.params.type.toLocaleLowerCase();
   res.set("Cache-Control", "no-cache");
-  if (ENDPOINTS.includes(req.params.endpoint.toLocaleLowerCase())) {
-    fetchImage(req.params.endpoint.toLocaleLowerCase(), res);
-  } else if (req.params.endpoint.toLocaleLowerCase() === "random") {
-    let endpoint = ENDPOINTS[
-      Math.floor(Math.random() * ENDPOINTS.length)
-    ].toLocaleLowerCase();
-    fetchImage(endpoint, res);
+  if (ENDPOINTS[type].includes(endpoint)) {
+    fetchImage(type, endpoint, res);
+  } else if (endpoint === "random") {
+    endpoint =
+      ENDPOINTS[type][Math.floor(Math.random() * ENDPOINTS[type].length)];
+    fetchImage(type, endpoint, res);
   } else {
     res.status(400).json({
       message: "Bad endpoint",
@@ -33,9 +34,9 @@ app.get("/:endpoint", async (req, res) => {
   }
 });
 
-async function fetchImage(endpoint, response) {
+async function fetchImage(type, endpoint, response) {
   try {
-    const { url } = await got(`${API_URL}${endpoint}`).json();
+    const { url } = await got(`${API_URL}/${type}/${endpoint}`).json();
 
     got
       .stream(url)

@@ -9,10 +9,7 @@
     "routes": [
         {
             "src": "/.*",
-            "dest": "index.js",
-            "headers": {
-                "cache-control": "no-cache"
-            }
+            "dest": "index.js"
         }
     ]
 }
