@@ -41,6 +41,9 @@ Here are different endpoints for API requests. Endpoints can be updated by the a
 }
 ```
 
+Live:
+![](https://shot-my-url.herokuapp.com/?url=https://waifu.pics/api/endpoints)
+
 ## How to get an image
 
 | URL                                  | Request Type |
