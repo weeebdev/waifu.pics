@@ -1,6 +1,6 @@
 # Simple server for redirecting to the images on [waifu.pics](https://waifu.pics/)
 
-![](https://waifu.now.sh/sfw/random)
+![](https://shot-my-url.herokuapp.com/?url=waifu.pics&width=1280&height=720)
 
 I wrote this server in order to be able to get random anime images for markdown
 
