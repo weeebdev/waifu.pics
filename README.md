@@ -1,8 +1,8 @@
-# Simple server for redirecting to the images on [waifu.pics](https://waifu.pics/)
+# Simple server for getting random images from [waifu.pics](https://waifu.pics/)
 
 ![](https://waifu.now.sh/sfw/random)
 
-I wrote this server in order to be able to get random anime images for markdown
+Simple API wrapped around @Waifu-pics in order to be able to get random anime images for my markdown profile
 
 - [Simple server for redirecting to the images on waifu.pics](#simple-server-for-redirecting-to-the-images-on-waifupics)
   - [API](#api)
