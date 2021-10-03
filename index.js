@@ -4,7 +4,7 @@ const got = require("got");
 
 const ENDPOINTS = require("./lib/endpoints.js");
 
-const API_URL = "https://waifu.pics/api";
+const API_URL = "https://api.waifu.pics";
 
 const app = express();
 
